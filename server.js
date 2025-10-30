@@ -1,6 +1,10 @@
 // Import the required packages
-const express = require("express");
-const fetch = require("node-fetch"); // used to call the external API
+// const express = require("express");
+// const fetch = require("node-fetch"); // used to call the external API
+
+// Import dependencies
+import express from "express";
+import fetch from "node-fetch"; // ✅ proper modern import
 const app = express();
 
 // Root route: fetch a random affirmation from an external API
