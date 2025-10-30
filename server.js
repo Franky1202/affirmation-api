@@ -7,6 +7,19 @@ import express from "express";
 import fetch from "node-fetch"; // ✅ proper modern import
 const app = express();
 
+app.get("/", async (req, res) => {
+  try {
+    const response = await fetch("https://www.affirmations.dev/");
+    const data = await response.json();
+
+    res.json({ affirmation: data.affirmation });
+  } catch (error) {
+    console.error("Error fetching affirmation:", error);
+    res.status(500).json({ error: "Unable to fetch affirmation" });
+  }
+});
+
+/*
 // Root route: fetch a random affirmation from an external API
 app.get("/", async (req, res) => {
   try {
@@ -40,6 +53,7 @@ app.get("/many", async (req, res) => {
     res.status(500).json({ error: "Unable to fetch multiple affirmations" });
   }
 });
+*/
 
 // Use Render's or local port
 const PORT = process.env.PORT || 3000;
